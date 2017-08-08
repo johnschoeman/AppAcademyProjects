@@ -15,7 +15,7 @@ class KnightPathFinder
     moves = []
     DELTAS.each do |d|
       move = [d.first + pos.first, d.last + pos.last]
-      moves << move if move.first.between?(0,7) && move.last.between?(0,7)
+      moves << move if move.first.between?(0, 7) && move.last.between?(0, 7)
     end
     moves
   end
@@ -54,7 +54,7 @@ class KnightPathFinder
     curr_node = end_node
     p curr_node.value
     until curr_node.parent.nil?
-      path << curr_node.parent.value 
+      path << curr_node.parent.value
       curr_node = curr_node.parent
       p curr_node.value
     end

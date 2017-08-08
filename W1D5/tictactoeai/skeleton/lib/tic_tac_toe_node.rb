@@ -48,7 +48,7 @@ class TicTacToeNode
       child = TicTacToeNode.new(new_board, next_mark, pos)
       children << child
     end
-    return children
+    children
   end
 
   def get_next_mover(curr_mark)
