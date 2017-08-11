@@ -13,17 +13,11 @@ class MinMaxStackQueue
   end
 
   def min
-    byebug
     [@stack_push.min, @stack_shift.min].compact.min
   end
 
   def dequeue
-    if @stack_shift.empty?
-      until @stack_push.empty?
-        el = @stack_push.pop
-        @stack_shift.push(el) unless el.nil?
-      end
-    end
+    swap if @stack_shift.empty?
     @stack_shift.pop
   end
 
@@ -33,6 +27,15 @@ class MinMaxStackQueue
 
   def empty?
     @stack_push.empty? && @stack_shift.empty?
+  end
+
+  private
+
+  def swap
+    until @stack_push.empty?
+      el = @stack_push.pop
+      @stack_shift.push(el) unless el.nil?
+    end
   end
 
 end
@@ -69,15 +72,13 @@ class MyStack
   end
 
   def max
-    prev_obj = peek
-    return nil if prev_obj.nil?
-    prev_obj[:max]
+    return nil if empty?
+    peek[:max]
   end
 
   def min
-    prev_obj = peek
-    return nil if prev_obj.nil?
-    prev_obj[:min]
+    return nil if empty?
+    peek[:min]
   end
 
   def pop
@@ -86,26 +87,7 @@ class MyStack
   end
 
   def push(el)
-    obj = { el: el }
-
-    prev_obj = @store.last
-
-    if prev_obj.nil?
-      prev_max = el
-      prev_min = el
-    else
-      prev_max = prev_obj[:max]
-      prev_min = prev_obj[:min]
-    end
-
-    max = prev_max
-    min = prev_min
-
-    max = el if el > prev_max
-    min = el if el < prev_min
-    obj[:max] = max
-    obj[:min] = min
-
+    obj = { el: el, min: curr_min(el), max: curr_max(el) }
     @store.push(obj)
   end
 
@@ -119,5 +101,27 @@ class MyStack
 
   def empty?
     @store.empty?
+  end
+
+  private
+
+  def curr_min(val)
+    if @store.empty?
+      val
+    elsif @store.last[:min] < val
+      @store.last[:min]
+    else
+      val
+    end
+  end
+
+  def curr_max(val)
+    if @store.empty?
+      val
+    elsif @store.last[:max] > val
+      @store.last[:max]
+    else
+      val
+    end
   end
 end

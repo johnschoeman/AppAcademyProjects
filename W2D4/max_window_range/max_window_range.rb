@@ -1,4 +1,4 @@
-require_relative 'min_max_stack_queue'
+require_relative 'minmaxstackqueue'
 require 'byebug'
 
 def naive_window_range(arr, w) # -> O(n^2)
@@ -12,20 +12,20 @@ def naive_window_range(arr, w) # -> O(n^2)
   current_max_range
 end
 
-def window_range(arr, w)
+def window_range(arr, w)  # -> O(n)
   queue = MinMaxStackQueue.new
   current_max_range = nil
   w.times do |i|
     queue.enqueue(arr[i])
   end
   (w..arr.length - 1).each do |i|
+    queue.dequeue
+    queue.enqueue(arr[i])
     min = queue.min
     max = queue.max
     diff = max - min
     current_max_range = diff if current_max_range.nil?
     current_max_range = diff if current_max_range < diff
-    queue.dequeue
-    queue.enqueue(arr[i])
   end
   current_max_range
 end
