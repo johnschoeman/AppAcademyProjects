@@ -1,3 +1,4 @@
+require 'byebug'
 require 'rspec'
 require 'p07_dynamic_array_bonus'
 
@@ -219,7 +220,6 @@ describe DynamicArray do
       expect(arr[-6]).to be_nil
 
       5.times { arr.shift }
-
       (1..100).each { |n| arr.push(n) }
       expect(arr[-6]).to eq(95)
 
