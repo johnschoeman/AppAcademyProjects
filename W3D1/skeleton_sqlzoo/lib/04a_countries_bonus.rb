@@ -38,17 +38,17 @@ def largest_in_continent
   # name, and area.
   execute(<<-SQL)
   SELECT
-    largest.continent, largest.name, largest.area
+    countries.continent, countries.name, countries.area
   FROM
     ( SELECT
-        countries.continent, countries.name, countries.area
+        countries.continent, MAX(countries.area) AS area
       FROM
         countries
       GROUP BY
         continent
-      HAVING
-        MAX(countries.area)
     ) AS largest
+  JOIN
+    countries ON countries.area = largest.area
   SQL
 end
 
@@ -56,6 +56,20 @@ def large_neighbors
   # Some countries have populations more than three times that of any of their
   # neighbors (in the same continent). Give the countries and continents.
   execute(<<-SQL)
-    
+  SELECT
+    c1.name, c1.continent
+  FROM
+    countries c1
+  WHERE
+    c1.population > 3 * (
+      SELECT
+        MAX(c2.population)
+      FROM
+        countries c2
+      WHERE
+        c1.name != c2.name AND
+        c1.continent = c2.continent
+    )
+
   SQL
 end
