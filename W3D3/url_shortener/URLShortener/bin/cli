@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'launchy'
+
+class UserIO
+
+  def self.run
+    puts "Enter your email"
+    email = gets.chomp
+
+    puts "Would you like to create a shortened url or visit one?"
+    answer = gets.chomp
+
+    if answer == "c"
+      puts "what is your url?"
+      url = gets.chomp
+      user = User.find_by_email(email)
+      unless user
+        user = User.create!(email: email)
+      end
+      shortened_url = ShortenedUrl.make_shortend_url(user, url)
+      puts shortened_url
+    else
+      puts "where would you like to visit?"
+      input = gets.chomp
+      shortened_url = ShortenedUrl.find_by_short_url(input)
+
+      actual_url = shortened_url.long_url
+
+      Launchy.open(actual_url)
+    end
+  end
+
+
+
+end
+
+UserIO.run
