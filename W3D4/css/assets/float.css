@@ -1,0 +1,146 @@
+body {
+  /* If the user cannot load the Arial font, the sans-serif font is used */
+  font-family: Arial, sans-serif;
+  background-color: #FEFFF1;
+}
+
+h1 {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+/* This selector selects ALL anchor tag children of ALL list elements that
+are children of an Unordered Lsit element */
+ul li a, figcaption a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  background-color: rgba(255,0,0,0.3);
+}
+
+header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+footer:before {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* This selector selects only IMMEDIATE (1 level deep) image element children
+of the header element */
+header > img {
+  width: 10%;
+  float: left;
+}
+
+img {
+  width: 100%;
+}
+/* Selects all elements with the class attribute "ingredients-list" */
+.ingredients-list {
+
+  /* The list style property is shorthand for multiple list-style properties*/
+  list-style: square inside;
+}
+
+ol {
+  list-style: upper-roman inside;
+}
+
+.user_review h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    width: 27px;
+    height: 27px;
+    background-image: url(../assets/stars.png);
+    vertical-align: bottom;
+}
+
+input[type="radio"]:checked {
+  background-position: 30px 30px;
+}
+
+
+input[type="submit"]:last-child {
+    background: gold;
+}
+
+input:last-child:hover {
+    -webkit-filter: brightness(90%);
+}
+
+ol li:nth-of-type(2n) {
+  background-color: whitesmoke;
+  margin: 10px 0;
+}
+
+h2 + .user_review {
+    border-top: 1px solid black;
+}
+
+nav {
+    /*display: inline-block;*/
+    float: right;
+    background-color: green;
+}
+
+nav ul li {
+    display:  inline-block;
+}
+
+nav ul li a {
+    padding: 20px;
+    display: block;
+}
+
+body {
+    margin: 0 auto; /* Common Centering Technique */
+    width: 90%;
+}
+
+section {
+    display: inline-block;
+    vertical-align: top;
+    background-color: rgb(0,0,255,0.3);
+}
+
+aside {
+    display: inline-block;
+    background-color: blue;
+}
+
+.ingredients-list li {
+ margin: 15px 0px;
+}
+
+input[type="text"], select {
+  display: block;
+  width: 175px;
+}
+
+select {
+  margin: 10px 0;
+  width: 180px;
+}
+
+textarea {
+  width: 350px;
+}
+
+label {
+  display: block;
+}
