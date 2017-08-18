@@ -1,3 +1,4 @@
+require 'byebug'
 require '01_sql_object'
 require 'db_connection'
 require 'securerandom'
@@ -160,6 +161,7 @@ describe SQLObject do
       end
 
       it '::all returns a list of objects, not hashes' do
+
         cats = Cat.all
         cats.each { |cat| expect(cat).to be_instance_of(Cat) }
       end
