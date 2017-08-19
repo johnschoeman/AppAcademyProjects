@@ -5,7 +5,6 @@ module Associatable
   # Remember to go back to 04_associatable to write ::assoc_options
 
   def has_one_through(name, through_name, source_name)
-    # ...
     through_options = self.assoc_options[through_name]
 
     define_method(name) do
@@ -16,5 +15,10 @@ module Associatable
       foreign_key_val = through_object.send(source_options.foreign_key)
       source_class.where(source_options.primary_key => foreign_key_val).first
     end
+  end
+
+
+  def has_many_through(name, through_name, source_name)
+
   end
 end
