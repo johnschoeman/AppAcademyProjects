@@ -9,6 +9,7 @@
 User.destroy_all
 Artwork.destroy_all
 ArtworkShare.destroy_all
+Comment.destroy_all
 
 u1 = User.create(username: Faker::RickAndMorty.character)
 u2 = User.create(username: Faker::RickAndMorty.character)
@@ -20,13 +21,13 @@ u5 = User.create(username: Faker::RickAndMorty.character)
 #  image_url  :string           not null
 #  artist_id  :integer          not null
 
-a1 = Artwork.create(title: Faker::RickAndMorty.quote, image_url: Faker::Internet.url, artist_id: u1.id)
-a2 = Artwork.create(title: Faker::RickAndMorty.quote, image_url: Faker::Internet.url, artist_id: u1.id)
-a3 = Artwork.create(title: Faker::RickAndMorty.quote, image_url: Faker::Internet.url, artist_id: u2.id)
-a4 = Artwork.create(title: Faker::RickAndMorty.quote, image_url: Faker::Internet.url, artist_id: u3.id)
-a5 = Artwork.create(title: Faker::RickAndMorty.quote, image_url: Faker::Internet.url, artist_id: u4.id)
-a6 = Artwork.create(title: Faker::RickAndMorty.quote, image_url: Faker::Internet.url, artist_id: u4.id)
-a7 = Artwork.create(title: Faker::RickAndMorty.quote, image_url: Faker::Internet.url, artist_id: u4.id)
+a1 = Artwork.create(title: Faker::Lovecraft.deity, image_url: Faker::Internet.url, artist_id: u1.id)
+a2 = Artwork.create(title: Faker::Lovecraft.deity, image_url: Faker::Internet.url, artist_id: u1.id)
+a3 = Artwork.create(title: Faker::Lovecraft.deity, image_url: Faker::Internet.url, artist_id: u2.id)
+a4 = Artwork.create(title: Faker::Lovecraft.deity, image_url: Faker::Internet.url, artist_id: u3.id)
+a5 = Artwork.create(title: Faker::Lovecraft.deity, image_url: Faker::Internet.url, artist_id: u4.id)
+a6 = Artwork.create(title: Faker::Lovecraft.deity, image_url: Faker::Internet.url, artist_id: u4.id)
+a7 = Artwork.create(title: Faker::Lovecraft.deity, image_url: Faker::Internet.url, artist_id: u4.id)
 
 
 # Table name: artwork_shares
@@ -41,3 +42,11 @@ as3 = ArtworkShare.create(artwork_id: a1.id, viewer_id: u4.id)
 as4 = ArtworkShare.create(artwork_id: a2.id, viewer_id: u2.id)
 as5 = ArtworkShare.create(artwork_id: a3.id, viewer_id: u4.id)
 as6 = ArtworkShare.create(artwork_id: a4.id, viewer_id: u3.id)
+
+
+c1 = Comment.create(artwork_id: a1.id, user_id: u2.id, body: Faker::RickAndMorty.quote)
+c2 = Comment.create(artwork_id: a2.id, user_id: u3.id, body: Faker::RickAndMorty.quote)
+c3 = Comment.create(artwork_id: a1.id, user_id: u4.id, body: Faker::RickAndMorty.quote)
+c4 = Comment.create(artwork_id: a2.id, user_id: u1.id, body: Faker::RickAndMorty.quote)
+c5 = Comment.create(artwork_id: a1.id, user_id: u2.id, body: Faker::RickAndMorty.quote)
+c6 = Comment.create(artwork_id: a3.id, user_id: u1.id, body: Faker::RickAndMorty.quote)
