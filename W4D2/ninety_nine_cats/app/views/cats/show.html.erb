@@ -1,0 +1,45 @@
+<h1><%= @cat.name %></h1>
+
+<!-- <ul>
+  <li>Name: <%= @cat.name %></li>
+  <li>Color: <%= @cat.color %></li>
+  <li>Sex: <%= @cat.sex %></li>
+  <li>Age: <%= @cat.age %></li>
+  <li>Birth Date: <%= @cat.birth_date %></li>
+  <li>description: <%= @cat.description %></li>
+</ul> -->
+
+<table>
+  <tr>
+    <td>Color: </td>
+    <td><%= @cat.color %></td>
+  </tr>
+  <tr>
+    <td>Sex: </td>
+    <td><%= @cat.sex %></td>
+  </tr>
+  <tr>
+    <td>Age: </td>
+    <td><%= @cat.age %></td>
+  </tr>
+  <tr>
+    <td>Birth Date: </td>
+    <td><%= @cat.birth_date %></td>
+  </tr>
+  <tr>
+    <td>Description: </td>
+    <td><%= @cat.description %></td>
+  </tr>
+</table>
+
+<h2>Rental Requests</h2>
+<ul>
+<% @cat_rentals.each do |rental| %>
+  <li><%= rental.start_date %> : <%= rental.end_date %> : <%= rental.status %></li>
+  <% if rental.pending? %>
+    <%= button_to 'Approve', approve_rental_url(rental), method: :patch %>
+    <%= button_to 'Deny', deny_rental_url(rental), method: :patch %>
+  <% end %>
+<% end %>
+</ul>
+<%= link_to 'Edit Cat', edit_cat_url(@cat) %>

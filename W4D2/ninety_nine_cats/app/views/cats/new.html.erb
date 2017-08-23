@@ -1,0 +1,34 @@
+<h1>Create a new cat!</h1>
+
+<%= render 'form', cat: Cat.new %>
+<!-- <form action="/cats" method="post">
+  <label for="cat_name">Name</label>
+  <input type="text" name="cat[name]" id="cat_name"value="">
+  <label for="cat_birthday">Birthdate</label>
+  <input type="date" name="cat[birth_date]" id="cat_birthday" value="">
+  <label>Sex</label>
+  <div>
+    <!-- note that both radio buttons have the name `cat[sex]`; that's how
+         they are related -->
+    <!-- <input name="cat[sex]" id="cat_sex_m" type="radio" value="M">
+    <label for="cat_sex_m">Male</label>
+    <input name="cat[sex]" id="cat_sex_f" type="radio" value="F">
+    <label for="cat_sex_f">Female</label>
+  </div>
+
+  <label for="cat_coat_color">Coat color</label>
+   <!-- dropdown -->
+   <!-- <select name="cat[color]">
+     <!-- `brown` is the value that will be submitted to the server; user is
+          displayed "Brown" as the choice
+      <option value="" disabled selected >--Choose Color--</option>
+      <% Cat::COLORS.each do |color| %>
+         <option value="<%= color %>"><%= color %></option>
+      <% end %>
+   </select>
+
+  <label for="cat_description">description</label>
+  <textarea name="cat[description]" id="cat_description"></textarea>
+  <input type="submit" name="" value="Create Cat">
+
+</form> -->

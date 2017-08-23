@@ -1,0 +1,53 @@
+<h1>Edit a cat!</h1>
+
+<%= render 'form', cat: @cat, action: :edit %>
+
+<!-- <form action="/cats/<%= @cat.id %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="cat_name">Name</label>
+  <input type="text" name="cat[name]" id="cat_name"value="<%= @cat.name %>">
+
+  <br>
+
+  <label for="cat_birthday">Birthdate</label>
+  <input type="date" name="cat[birth_date]" id="cat_birthday" value="<%= @cat.birth_date %>">
+
+  <br>
+
+  <label>Sex</label>
+  <div>
+    <!-- note that both radio buttons have the name `cat[sex]`; that's how
+         they are related -->
+    <!-- <%# if @cat.sex == 'M' %> -->
+
+    <!-- <input name="cat[sex]" id="cat_sex_m" <%= @cat.sex == 'M' ? 'checked' : '' %> type="radio" value="M">
+    <label for="cat_sex_m">Male</label>
+    <input name="cat[sex]" id="cat_sex_f" type="radio" value="F" <%= @cat.sex == 'F' ? 'checked' : '' %> >
+    <label for="cat_sex_f">Female</label>
+  </div>
+
+  <br>
+
+  <label for="cat_coat_color">Coat color</label>
+   <!-- dropdown
+   <select name="cat[color]">
+     <!-- `brown` is the value that will be submitted to the server; user is
+          displayed "Brown" as the choice
+      <option value="" disabled selected >--Choose Color--</option>
+      <% Cat::COLORS.each do |color| %>
+         <option <%= @cat.color == color ? 'selected' : "" %> value="<%= color %>"><%= color %></option>
+      <% end %>
+   </select>
+
+   <br>
+
+  <label for="cat_description">description</label>
+  <textarea name="cat[description]" id="cat_description"><%= @cat.description %></textarea>
+
+  <br>
+  <br>
+
+  <input type="submit" name="" value="Edit Cat">
+
+</form> -->
