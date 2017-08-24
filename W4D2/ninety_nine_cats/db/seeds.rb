@@ -25,6 +25,8 @@ Cat.destroy_all
 #   end
 # # end
 
+ActiveRecord::Base.transact do
+
 c1 = Cat.create(birth_date: Faker::Date.between(20.years.ago, Date.today),
   color: %w(orange blue green taco).sample,
   name: Faker::RickAndMorty.character, sex: %w(M F).sample,
@@ -57,3 +59,4 @@ Cat.create(birth_date: Faker::Date.between(20.years.ago, Date.today),
 
 CatRentalRequest.create(cat_id: c1.id, start_date: Time.now, end_date: 10.days.from_now, status: 'APPROVED')
 CatRentalRequest.create(cat_id: c2.id, start_date: Time.now, end_date: 10.days.from_now, status: 'PENDING')
+end
