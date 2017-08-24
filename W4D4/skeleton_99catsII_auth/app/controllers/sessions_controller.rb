@@ -9,8 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:user][:username])
 
     if !user.nil? && user.is_password?(params[:user][:password])
-      user.reset_session_token!
-      session[:session_token] = user.session_token
+      login!(user)
       redirect_to cats_url
     else
       flash[:error] = "Incorrect Username or Password."
