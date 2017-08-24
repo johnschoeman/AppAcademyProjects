@@ -9,6 +9,20 @@
   </head>
 
   <body>
+
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "flash #{key}" %>
+  <% end %>
+
+
+  <% if !current_user.nil? %>
+    <p>Weclome <%= current_user.username %></p>
+    <%= button_to 'Log Out', session_url, method: :delete %>
+  <% else %>
+    <!-- implement a way to not show this on the actual login page -->
+    <%= button_to 'Log In', new_session_url, method: :get %>
+  <% end %>
+
     <%= yield %>
   </body>
 </html>

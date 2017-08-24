@@ -1,4 +1,6 @@
 class CatsController < ApplicationController
+  skip_before_action :require_login, only: [:index, :show]
+
   def index
     @cats = Cat.all
     render :index
