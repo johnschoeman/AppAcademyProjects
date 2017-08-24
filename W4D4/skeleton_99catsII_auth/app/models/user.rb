@@ -25,4 +25,14 @@ class User < ApplicationRecord
   def reset_session_token!
     self.session_token ||= SecureRandom::urlsafe_base64
   end
+
+  has_many :cats,
+    foreign_key: :user_id,
+    primary_key: :id,
+    class_name: :Cat
+
+  has_many :requests,
+    class_name: :CatRentalRequest,
+    dependent: :destroy
+    
 end
