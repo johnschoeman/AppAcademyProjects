@@ -20,8 +20,7 @@ class SessionsController < ApplicationController
   def destroy
     user = current_user
     if !user.nil?
-      user.session_token = nil
-      session[:session_token] = nil
+      logout_user!(user)
       redirect_to cats_url
     end
   end

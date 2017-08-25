@@ -8,13 +8,19 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :cats,
-  foreign_key: :user_id,
-  primary_key: :id,
-  class_name: :Cat
+    foreign_key: :user_id,
+    primary_key: :id,
+    class_name: :Cat
 
   has_many :requests,
-  class_name: :CatRentalRequest,
-  dependent: :destroy
+    class_name: :CatRentalRequest,
+    dependent: :destroy
+
+  has_many :session_tokens,
+    foreign_key: :user_id,
+    primary_key: :id,
+    class_name: :SessionToken,
+    dependent: :destroy
 
   def password=(password)
     @password = password
@@ -32,10 +38,19 @@ class User < ApplicationRecord
   end
 
   def reset_session_token!
+    # old_session = SessionToken.find_by(session_token: self.session_token)
+    # SessionToken.delete(old_session.id) unless old_session.nil?
+
+    new_session_token = SecureRandom.urlsafe_base64
     self.session_token = new_session_token
+    SessionToken.create(user_id: self.id, session_token: new_session_token)
+
     self.save!
-    # self.session_token ||= new_session_token
     self.session_token
+  end
+  
+  def scramble_session_token
+    self.session_token = SecureRandom.urlsafe_base64
   end
 
   private
@@ -44,18 +59,19 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom.urlsafe_base64
   end
 
-  def new_session_token
-    SecureRandom.urlsafe_base64
-  end
+  # def new_session_token
+  #   SecureRandom.urlsafe_base64
+  # end
 
-  def generate_unique_session_token
-    self.session_token = new_session_token
-    while User.exists?(session_token: self.session_token)
-      self.session_token = new_session_token
-    end
 
-    self.session_token
-  end
+  # def generate_unique_session_token
+  #   self.session_token = new_session_token
+  #   while User.exists?(session_token: self.session_token)
+  #     self.session_token = new_session_token
+  #   end
+  #
+  #   self.session_token
+  # end
 
 end
 

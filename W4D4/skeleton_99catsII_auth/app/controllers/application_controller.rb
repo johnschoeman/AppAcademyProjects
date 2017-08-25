@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return nil unless session[:session_token]
-    @current_user ||= User.find_by(session_token: session[:session_token])
+    current_session = SessionToken.find_by(session_token: session[:session_token])
+    user_id = current_session.user_id unless current_session.nil?
+    @current_user ||= User.find_by(id: user_id)
   end
 
   def login!(user)
@@ -19,8 +21,11 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
-  def logout_user!
-    current_user.reset_session_token!
+  def logout_user!(user)
+    # old_session = SessionToken.find_by(session_token: user.session_token)
+    # SessionToken.delete(old_session.id) unless old_session.nil?
+    # current_user.reset_session_token!
+    user.reset_session_token!
     session[:session_token] = nil
   end
 
