@@ -17,6 +17,7 @@
   <% user = current_user %>
   <% if !user.nil? %>
     <p>Weclome <%= user.username %></p>
+    <p>You are currently loged in here: <%= user.device %></p>
     <%= button_to 'Log Out', session_url, method: :delete %>
   <% else %>
     <!-- implement a way to not show this on the actual login page -->

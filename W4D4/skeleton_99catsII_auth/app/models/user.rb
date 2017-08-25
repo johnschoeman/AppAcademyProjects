@@ -48,9 +48,17 @@ class User < ApplicationRecord
     self.save!
     self.session_token
   end
-  
+
   def scramble_session_token
     self.session_token = SecureRandom.urlsafe_base64
+  end
+
+  def device
+    @device
+  end
+
+  def device=(device)
+    @device = device
   end
 
   private

@@ -10,6 +10,10 @@ class SessionsController < ApplicationController
 
     if !user.nil? && user.is_password?(params[:user][:password])
       login!(user)
+      # user.referrer = request.env["HTTP_REFERRER"]
+      # fail
+      @referrer = request.env["HTTP_REFERRER"]
+      user.device = request.env['mobvious.device_type']
       redirect_to cats_url
     else
       flash[:error] = "Incorrect Username or Password."

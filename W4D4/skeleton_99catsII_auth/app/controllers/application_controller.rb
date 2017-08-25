@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
     current_session = SessionToken.find_by(session_token: session[:session_token])
     user_id = current_session.user_id unless current_session.nil?
     @current_user ||= User.find_by(id: user_id)
+    @current_user.device = request.env['mobvious.device_type']
+    @current_user
   end
 
   def login!(user)
