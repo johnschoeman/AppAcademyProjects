@@ -1,0 +1,18 @@
+<h1>Band: </h1>
+<%= render @band %>
+
+<h1>Albums: </h1>
+<section class="band_album_list">
+
+  <% @albums.each do |album| %>
+    <section class="band_album">
+    <%= render album %>
+    <%= link_to 'Link To Album', album_url(album), method: :get %>
+  </section>
+  <% end %>
+
+</section>
+<br>
+<br>
+
+<%= link_to 'Create Album', new_band_album_url(@band), method: :get %>

@@ -1,0 +1,18 @@
+<h1>Create a User</h1>
+
+<form action="/users" method="post">
+  <%= auth_token %>
+
+  <label for="user_email">Email: </label>
+  <input type="email" name="user[email]" id="user_email">
+
+  <br>
+
+  <label for="user_password">Password: </label>
+  <input type="password" name="user[password]" id="user_password">
+
+  <br>
+  <br>
+
+  <input type="submit" class="button_to" value="Create User">
+</form>
