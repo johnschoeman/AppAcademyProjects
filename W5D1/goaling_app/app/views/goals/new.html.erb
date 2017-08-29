@@ -1,0 +1,25 @@
+New Goal
+
+
+<form class="" action="/goals" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>Title
+    <input type="text" name="goal[title]" value="<%= @goal.nil? ? "" : @goal.title %>">
+  </label>
+
+  <label>Details
+    <input type="text" name="goal[details]" value="<%= @goal.nil? ? "" : @goal.details %>">
+  </label>
+
+  <label>Private?
+    <input type="checkbox" name="goal[private]" value="true">
+  </label>
+
+  <label>Completed?
+    <input type="checkbox" name="goal[completed]" value="true">
+  </label>
+  <input type="hidden" name=":id" value="<%= @goal.nil? ? "" : @goal.id %>">
+
+  <input type="submit" name="" value="New Goal">
+</form>

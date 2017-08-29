@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it 'should have many goals'
+    it { should have_many(:goals) }
     it 'should have many comments'
   end
 
