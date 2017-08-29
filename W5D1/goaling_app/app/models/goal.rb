@@ -18,8 +18,5 @@ class Goal < ApplicationRecord
 
   belongs_to :user
 
-  has_many :goal_comments,
-    foreign_key: :goal_id,
-    primary_key: :id,
-    class_name: :GoalComment
+  has_many :comments, as: :commentable
 end

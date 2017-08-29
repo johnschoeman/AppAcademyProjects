@@ -6,17 +6,17 @@
 
 <% @comments.each do |c| %>
 "<%= c.body  %>", says <%= c.author.username %>
-<%= button_to 'delete comment', user_comment_url(c), method: :delete %><br>
+<%= button_to 'delete comment', comment_url(c), method: :delete %><br>
 <% end %>
 
 <h2>Add Comment</h2>
 
-<form class="" action="<%= user_user_comments_url(@user) %>" method="post">
+<form class="" action="<%= user_comments_url(@user) %>" method="post">
   <%= auth_token %>
 
   <label for="user_comment">Comment</label>
   <br>
-  <input id="user_comment" type="text" name="user_comment[body]" value="">
+  <input id="user_comment" type="text" name="comment[body]" value="">
   <br>
   <br>
   <input type="submit" name="" value="Add Comment">

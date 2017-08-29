@@ -8,11 +8,11 @@
 
 <h2>Add Comment</h2>
 
-<form class="" action="<%= goal_goal_comments_url(@goal) %>" method="post">
+<form class="" action="<%= goal_comments_url(@goal) %>" method="post">
   <%= auth_token %>
 
   <label for="goal_comment">Comment</label>
-  <input type="text" id="goal_comment" name="goal_comment[body]" value="">
+  <input type="text" id="goal_comment" name="comment[body]" value="">
 
   <input type="submit" name="" value="Add Comment">
 </form>

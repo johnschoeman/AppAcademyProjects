@@ -21,7 +21,7 @@ class GoalsController < ApplicationController
 
   def show
     @goal = Goal.find(params[:id])
-    @comments =  @goal.goal_comments
+    @comments =  @goal.comments
   end
 
   def destroy

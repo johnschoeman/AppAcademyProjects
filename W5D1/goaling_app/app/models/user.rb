@@ -20,15 +20,12 @@ class User < ApplicationRecord
 
   has_many :goals
 
-  has_many :user_comments,
-    foreign_key: :user_id,
-    primary_key: :id,
-    class_name: :UserComment
+  has_many :comments, as: :commentable
 
-  has_many :authored_user_comments,
+  has_many :authored_comments,
     foreign_key: :author_id,
     primary_key: :id,
-    class_name: :UserComment
+    class_name: :Comment
 
   def password=(password)
     @password = password
