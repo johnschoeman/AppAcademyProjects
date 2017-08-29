@@ -109,3 +109,10 @@ def sign_in_bob
   fill_in 'Password', with: 'password'
   click_button 'Sign In'
 end
+
+def sign_in(user)
+  visit new_session_url
+  fill_in 'Username', with: user.username
+  fill_in 'Password', with: user.password
+  click_button 'Sign In'
+end

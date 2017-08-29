@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def requrie_login
+  def require_login
     redirect_to new_session_url if current_user.nil?
   end
 

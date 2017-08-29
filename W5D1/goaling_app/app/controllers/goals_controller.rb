@@ -1,4 +1,6 @@
 class GoalsController < ApplicationController
+  before_action :require_login
+
   def new
     # @goal ||= Goal.new
   end
@@ -19,6 +21,7 @@ class GoalsController < ApplicationController
 
   def show
     @goal = Goal.find(params[:id])
+    @comments =  @goal.goal_comments
   end
 
   def destroy
