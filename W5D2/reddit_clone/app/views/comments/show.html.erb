@@ -4,6 +4,7 @@ by: <%= @comment.author.username %>
 votes: <%= count_votes(@comment) %>
 
 <%= button_to "Up Vote", comment_upvote_url(@comment) %>
+<%= link_to 'up vote', comment_upvote_url(@comment), method: :post %>
 <%= button_to "Down Vote", comment_downvote_url(@comment) %>
 
 <%= link_to "Parent Post", post_url(@comment.post) %>
