@@ -1,0 +1,29 @@
+<%= @sub.title %><br>
+<%= @sub.description %><br>
+Moderators<br>
+<%= @sub.moderator.username %><br>
+
+
+<% if current_user == @sub.moderator %>
+  <%= link_to 'Edit Sub', edit_sub_url(@sub) %>
+<% end %>
+
+<%= link_to "New Post", new_post_url %>
+
+<h1>Post</h1>
+<% @sub.posts.each do |post| %>
+  <ul>
+    <li>
+      <%= post.votes.map{|vote| vote.value}.inject(:+) %>
+    </li>
+    <li>
+      <%= button_to "Up Vote", post_upvote_url(post) %>
+    </li>
+    <li>
+      <%= button_to "Down Vote", post_downvote_url(post) %>
+    </li>
+    <li>
+      <%= link_to post.title, post_url(post) %><br>
+    </li>
+  </ul>
+<% end %>

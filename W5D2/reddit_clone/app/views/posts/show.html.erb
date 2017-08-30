@@ -1,0 +1,41 @@
+Post: <%= @post.title %><br>
+url: <%= @post.url %><br>
+content: <%= @post.content %><br>
+author: <%= @post.author.username %><br>
+
+<h2>Subs</h2>
+
+<% @post.subs.each do |sub| %>
+  <%= link_to sub.title, sub_url(sub) %><br>
+<% end %>
+
+
+<%= link_to "Edit Post", edit_post_url(@post) %><br>
+
+<%= link_to "Add Comment", new_post_comment_url(@post) %><br>
+
+<br>
+
+
+<h1>Phase IV Comments</h1>
+<% @post.comments.each do |comment| %>
+  <% if comment.parent_comment_id.nil? %>
+    <%= list_comments(comment) %>
+  <% end %>
+<% end %>
+
+
+
+<h1>Phase V Comments</h1>
+<% @all_comments.each do |comment| %>
+  <% if comment.parent_comment_id.nil? %>
+    <%= better_list_comments(@all_comments, comment) %>
+  <% end %>
+<% end %>
+
+
+<h1>Phase VI Comments</h1>
+
+<% @all_hash_comments[nil].each do |child_comment| %>
+    <%= best_list_comments(@all_hash_comments, child_comment) %>
+<% end %>
