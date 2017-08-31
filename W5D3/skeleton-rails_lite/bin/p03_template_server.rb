@@ -11,6 +11,7 @@ app = Proc.new do |env|
   req = Rack::Request.new(env)
   res = Rack::Response.new
   MyController.new(req, res).go
+  p res
   res.finish
 end
 
