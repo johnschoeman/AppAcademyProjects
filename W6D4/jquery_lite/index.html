@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="./lib/jquery_lite.js"></script>
+    <title></title>
+
+    <script type="text/javascript">
+
+
+    function sayhi () {
+      console.log('doc is ready');
+    }
+      document.addEventListener('DOMContentLoaded', sayhi, false);
+
+      function cb () {
+        console.log(this);
+      }
+      window.$l( () => {
+        console.log('adding listener to', this);
+        window.$l('li').on('click', cb)
+      } )
+
+      console.log('before doc is loaded');
+    </script>
+
+  </head>
+
+  <body>
+    <div class="div-1">
+      <ul class="ul-1">
+        <li id="unicorn-li">Unicorn</li>
+        <li>Chocolate</li>
+        <li>Rainbows</li>
+
+      </ul>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    window.$l( () => {
+      console.log(document);
+    })
+    console.log('before doc is loaded2');
+  </script>
+</html>
