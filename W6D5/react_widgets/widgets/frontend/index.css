@@ -17,7 +17,6 @@ span, article, footer, time, small {
   box-sizing: inherit;
   background: transparent;
   font-family: 'Roboto', sans-serif;
-
 }
 
 ul {
@@ -58,16 +57,62 @@ input[type="submit"] {
   clear: both;
 }
 
+input {
+  border: 1px solid #000;
+  border-radius: 2px;
+  padding: 2px;
+  background-color: #fff;
+}
+
+.component {
+  height: auto;
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 2px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.header {
+  height: auto;
+  margin: auto;
+}
+
+.long {
+  width: 80%;
+}
+
+.short {
+  width: 30%;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+  padding: 10px;
+}
+
 .clock {
-  background-color: #aa0;
+  background-color: #FFA500;
 }
 
-.time {
-  display: flex;
-  justify-content: space-around;
+.autocomplete {
+  background-color: #EE82EE
 }
 
-.date {
+.weather {
+  background-color: #90EE90;
+}
+
+.tabs {
+  background-color: #FFFFFF
+}
+
+.tab-header {
   display: flex;
-  justify-content: space-around;
+}
+
+.active {
+  font-weight: bold;
 }

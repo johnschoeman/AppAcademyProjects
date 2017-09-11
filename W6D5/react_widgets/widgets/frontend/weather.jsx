@@ -25,6 +25,7 @@ class Weather extends React.Component{
     let lat = pos.coords.latitude;
     let long = pos.coords.longitude;
     let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=cc9a7035f5df20c3927a8e77ab182346`;
+
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = () => {
         if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
@@ -42,7 +43,7 @@ class Weather extends React.Component{
 
   xmlhttp.onload = function () {
 
-  }
+  };
 
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
@@ -51,34 +52,29 @@ class Weather extends React.Component{
 
   // arr.map((item, idx) => <li key={idx}>{JSON.stringify(item)}</li>)
   render(){
-    let content = <div></div>;
+    let content = "";
 
     if (this.state.weather) {
       let weather = this.state.weather;
       let temp = (weather.main.temp - 273.15) * 1.8 + 32;
-      content = <div>
-                  <p>{weather.name}</p>
-                  <p>{temp.toFixed(1)} degrees</p>
-                </div>;
+      content = <ul className="content">
+                  <li>{weather.name}</li>
+                  <li>{temp.toFixed(1)} degrees</li>
+                </ul>;
     } else {
       content = <div className='loading'>loading weather...</div>;
     }
     return (
-      <div>
+      <div className="header long">
         <h1>Weather</h1>
-        <div className='weather'>
-          {content}
+        <div className="weather component">
+          <div>
+            {content}
+          </div>
         </div>
       </div>
     );
   }
 
 }
-
-
-
-
-
-
-
 export default Weather;

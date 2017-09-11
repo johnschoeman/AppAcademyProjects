@@ -22,7 +22,7 @@ class AutoComplete extends React.Component {
 
     let that = this;
     let results = [];
-    let names = this.prop.names.names;
+    let names = this.prop.names;
 
     for (let i = 0; i < names.length; i++){
       if (names[i].startsWith(this.state.inputVal)){
@@ -43,13 +43,21 @@ class AutoComplete extends React.Component {
   render(){
     let names = this.filterNames();
 
-    let content = <div>
-      <input type="text" onChange={this.setInputVal} value={this.state.inputVal}></input>
-      <ul>
-        {names.map((name) => {
-          return <li onClick={ this.fillInput }>{name}</li>;
-        })}
-      </ul>
+    let content = <div className="header short">
+      <h1>AutoComplete</h1>
+      <div className="autocomplete component">
+        <div className="">
+          <input type="text"
+            onChange={this.setInputVal}
+            value={this.state.inputVal}>
+          </input>
+          <ul>
+            {names.map((name) => {
+              return <li onClick={ this.fillInput }>{name}</li>;
+            })}
+          </ul>
+        </div>
+      </div>
     </div>;
     return content;
   }

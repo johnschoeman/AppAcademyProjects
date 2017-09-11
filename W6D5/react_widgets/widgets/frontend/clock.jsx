@@ -24,14 +24,17 @@ class Clock extends React.Component {
     const date = this.state.currTime;
 
     return (
-      <div className="clock">
-        <div className = "time">
-          <p>Time: </p>
-          <p>{`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`}</p>
-        </div>
-        <div className="date">
-          <p>Date: </p>
-          <p>{`${date.getDate()}`}</p>
+      <div className="header long">
+        <h1>Clock</h1>
+        <div className="clock component">
+          <div className = "time content">
+            <p>Time: </p>
+            <p>{date.toLocaleTimeString()}</p>
+          </div>
+          <div className="date content">
+            <p>Date: </p>
+            <p>{`${date.toLocaleDateString()}`}</p>
+          </div>
         </div>
       </div>
     );
