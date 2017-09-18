@@ -6,6 +6,7 @@ export const signup = (user) => {
   });
 };
 
+// user = {username: "name", password: "password"}
 export const login = (user) => {
   return $.ajax({
     method: 'POST',
