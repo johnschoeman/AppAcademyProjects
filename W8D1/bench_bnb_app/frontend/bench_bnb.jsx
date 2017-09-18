@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import * as Actions from './actions/session_actions';
+import * as Actions from './actions/bench_actions';
+import * as BenchApi from './util/bench_api_util';
 
-window.login = Actions.login;
-window.logout = Actions.logout;
-window.signup = Actions.signup;
+// Testing Start
+window.fetchBenches = Actions.fetchBenches;
+
+window.getBenches = BenchApi.getBenches;
+window.postBench = BenchApi.postBench;
+// Testing End
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
