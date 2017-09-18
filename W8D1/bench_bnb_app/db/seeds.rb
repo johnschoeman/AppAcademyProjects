@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+10.times do |i|
+  Bench.create(description: "bench-#{i}", lat: rand(35..39), lng: rand((-122)..(-119)))
+end
