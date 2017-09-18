@@ -11,7 +11,14 @@ window.signup = Actions.signup;
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
-  const store = configureStore();
+  let store = undefined;
+
+  if (window.currentUser) {
+    const preLoadedState = { session: {currentUser: window.currentUser } };
+    store = configureStore(preLoadedState);
+  } else {
+    store = configureStore();
+  }
 
   // Testing Start
   window.getState = store.getState;
