@@ -2,9 +2,10 @@
 <html>
   <head>
     <title>BenchBnbApp</title>
-    <%= csrf_meta_tags %>
 
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyASqqCQ54V5Cuti0B2-CrfT1crEyx8SpAE" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= csrf_meta_tags %>
     <%= javascript_include_tag 'application' %>
   </head>
 
@@ -12,3 +13,6 @@
     <%= yield %>
   </body>
 </html>
+
+
+<!-- AIzaSyASqqCQ54V5Cuti0B2-CrfT1crEyx8SpAE -->
