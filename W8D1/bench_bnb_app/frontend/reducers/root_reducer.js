@@ -7,6 +7,17 @@ import entitiesReducer from './entities_reducer';
 // Sample State
 //
 // {
+//   entities: {
+//     benches: {
+//       1: {
+//         id: 1,
+//         description: "benchy the bench",
+//         lat: -122,
+//         lng: 32
+//       }
+//
+//     }
+//   },
 //   session: {
 //     currentUser: {
 //       id: 1,
